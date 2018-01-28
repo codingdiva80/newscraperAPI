@@ -18,10 +18,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("public"));
 
 mongoose.Promise = Promise;
-var MONGODB_URI = mongodbLogin || "mongodb://localhost/nytreactapp";
-// mongoose.connect(MONGODB_URI, {
-//   useMongoClient: true
-// });
 
 // var db = mongoose.connection;
 app.use("/", router);
