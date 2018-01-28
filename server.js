@@ -12,7 +12,6 @@ var PORT = process.env.PORT || 3001;
 console.log(process.env.PORT);
 
 var app = express();
-var mongodbLogin = "mongodb://newscraper.codingdiva.db:c0dingdiv\@@ds163806.mlab.com:63806/nytreact";
 
 // Configure middleware
 app.use(bodyParser.urlencoded({ extended: false }));

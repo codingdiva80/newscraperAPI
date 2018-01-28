@@ -5,7 +5,7 @@ var request = require("request");
 var Article = require("../models/Article.js");
 
 router.get("/", function(req, res) {
-    res.render("index.html");
+    res.render("public");
 });
 
 router.post("/save", function(req, res){
