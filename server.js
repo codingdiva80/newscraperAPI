@@ -44,11 +44,12 @@ else{
   var mlabUrl = "mongodb://newscraper.codingdiva.db:c0dingdiva@ds163806.mlab.com:63806/nytreact";
   // Use connect method to connect to the Server
   MongoClient.connect(url, function (err, db) {
-  if (err) {
-  console.log('Unable to connect to the mongoDB server. Error:', err);
-  } else {
-  console.log('Connection established to', url);
-
+    if (err) {
+      console.log('Unable to connect to the mongoDB server. Error:', err);
+    } else {
+      console.log('Connection established to', url);
+    }
+  });
 }
 
 
