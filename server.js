@@ -37,18 +37,19 @@ if(!process.env.PORT){
 }
 else{
   //lets require/import the mongodb native drivers.
-  var mongodb = require('mongodb');
+  var db;
 
-  //We need to work with "MongoClient" interface in order to connect to a mongodb server.
-  var MongoClient = mongodb.MongoClient;
-  var mlabUrl = "mongodb://newscraper.codingdiva.db:c0dingdiva@ds163806.mlab.com:63806/nytreact";
-  // Use connect method to connect to the Server
-  MongoClient.connect(mlabUrl, function (err, db) {
-    if (err) {
-      console.log('Unable to connect to the mongoDB server. Error:', err);
-    } else {
-      console.log('Connection established to', url);
-    }
+// Connect to the database before starting the application server.
+mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
+  if (err) {
+    console.log(err);
+    process.exit(1);
+  }
+
+  // Save database object from the callback for reuse.
+  db = database;
+  console.log("Database connection ready");
+
   });
 }
 
