@@ -16,8 +16,7 @@ var mongodbLogin = "mongodb://newscraper.codingdiva.db:c0dingdiv\@@ds163806.mlab
 
 // Configure middleware
 app.use(bodyParser.urlencoded({ extended: false }));
-console.log(__dirname + '/nytimes-react-app/public');
-app.use(express.static(__dirname + '/nytimes-react-app/public'));
+app.use(express.static("public"));
 
 mongoose.Promise = Promise;
 var MONGODB_URI = mongodbLogin || "mongodb://localhost/nytreactapp";
