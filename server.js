@@ -38,10 +38,15 @@ if(!process.env.PORT){
 }
 else{
   //lets require/import the mongodb native drivers.
+  //lets require/import the mongodb native drivers.
+var mongodb = require('mongodb');
+
+//We need to work with "MongoClient" interface in order to connect to a mongodb server.
+var MongoClient = mongodb.MongoClient;
   var db;
 
 // Connect to the database before starting the application server.
-mongoose.connect(process.env.MONGODB_URI, function (err, database) {
+MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
   if (err) {
     console.log(err);
     process.exit(1);
