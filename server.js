@@ -3,6 +3,7 @@ var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var request = require("request");
 var cors = require('cors');
+var mongodb = require("mongodb");
 
 var Article = require("./models/Article.js");
 var router = require("./controllers/controllers.js");
