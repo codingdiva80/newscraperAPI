@@ -13,6 +13,7 @@ router.post("/save", function(req, res){
     newArticleToSave.save(function(err, doc) {
         if(err) {
             console.log(err);
+            res.send("ERROR: "+err);
         } else {
             console.log("Success!");
             res.send("Success!");
