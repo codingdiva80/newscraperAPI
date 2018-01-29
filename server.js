@@ -29,35 +29,16 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 mongoose.Promise = Promise;
-
+var MONGODB_URI;
 if(!process.env.PORT){
-  var MONGODB_URI = "mongodb://localhost/nytreactapp";
-  mongoose.connect(MONGODB_URI, {
-    useMongoClient: true
-  });
+   MONGODB_URI = "mongodb://localhost/nytreactapp";
 }
 else{
-  //lets require/import the mongodb native drivers.
-  //lets require/import the mongodb native drivers.
-var mongodb = require('mongodb');
-
-//We need to work with "MongoClient" interface in order to connect to a mongodb server.
-var MongoClient = mongodb.MongoClient;
-  var db;
-
-// Connect to the database before starting the application server.
-MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
-  if (err) {
-    console.log(err);
-    process.exit(1);
-  }
-
-  // Save database object from the callback for reuse.
-  db = database;
-  console.log("Database connection ready");
-
-  });
+  MONGODB_URI = "mongodb://newscraper.codingdiva.db:c0dingdiva@ds163806.mlab.com:63806/nytreact";
 }
+mongoose.connect(MONGODB_URI, {
+  useMongoClient: true
+});
 
 
 // var db = mongoose.connection;
