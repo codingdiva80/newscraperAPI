@@ -3,7 +3,6 @@ var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var request = require("request");
 var cors = require('cors');
-var mongodb = require("mongodb");
 
 var Article = require("./models/Article.js");
 var router = require("./controllers/controllers.js");
@@ -29,16 +28,16 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 mongoose.Promise = Promise;
-var MONGODB_URI;
-if(!process.env.PORT){
-   MONGODB_URI = "mongodb://localhost/nytreactapp";
-}
-else{
-  MONGODB_URI = "mongodb://newscraper.codingdiva.db:c0dingdiva@ds163806.mlab.com:63806/nytreact";
-}
-mongoose.connect(MONGODB_URI, {
-  useMongoClient: true
-});
+
+let connectionUrl = (!process.env.PORT) ? 
+  "mongodb://localhost/nytreactapp" : 
+  "mongodb://newscraper.codingdiva.db:c0dingdiva@ds163806.mlab.com:63806/nytreact"
+
+  var MONGODB_URI = "";
+  mongoose.connect(connectionUrl, {
+    useMongoClient: true
+  });
+
 
 
 // var db = mongoose.connection;
