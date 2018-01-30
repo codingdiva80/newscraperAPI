@@ -26,7 +26,7 @@ router.get("/savedarticles", function(req, res) {
         if (error) {
             console.log(error);
         } else {
-            res.json(res);
+            res.json(doc);
         }
     });
 });
